@@ -21,17 +21,17 @@ export default function CircularProgress({
 
   // Compute color based on score range
   let strokeColor = "stroke-emerald-500";
-  let bgFillColor = "text-emerald-50";
-  let textColor = "text-emerald-900";
+  let bgFillColor = "text-emerald-400";
+  let textColor = "text-white";
 
   if (score < 50) {
     strokeColor = "stroke-rose-500";
-    bgFillColor = "text-rose-50";
-    textColor = "text-rose-900";
+    bgFillColor = "text-rose-400";
+    textColor = "text-rose-400";
   } else if (score < 75) {
     strokeColor = "stroke-amber-500";
-    bgFillColor = "text-amber-50";
-    textColor = "text-amber-900";
+    bgFillColor = "text-amber-400";
+    textColor = "text-amber-400";
   }
 
   return (
@@ -42,7 +42,7 @@ export default function CircularProgress({
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          className="stroke-slate-200 fill-none"
+          className="stroke-white/10 fill-none"
           strokeWidth={strokeWidth}
         />
         {/* Progress Circle */}
@@ -59,11 +59,11 @@ export default function CircularProgress({
       </svg>
       {/* Content overlays */}
       <div className="absolute flex flex-col items-center justify-center">
-        <span className={`text-3xl font-bold font-sans tracking-tight ${textColor}`}>
+        <span className={`text-4xl font-light font-sans tracking-tight ${textColor === "text-white" ? "text-white" : textColor}`}>
           {score}
         </span>
         {label && (
-          <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-slate-500 mt-0.5">
+          <span className="text-[9px] font-sans font-semibold uppercase tracking-wider text-white/40 mt-1">
             {label}
           </span>
         )}

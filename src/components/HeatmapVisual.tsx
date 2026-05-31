@@ -41,29 +41,29 @@ export default function HeatmapVisual({ data }: HeatmapVisualProps) {
   }
 
   function getRefinedGlow(score: number) {
-    if (score >= 90) return "shadow-[0_0_12px_rgba(239,68,68,0.25)] border-red-300";
-    if (score >= 70) return "shadow-[0_0_10px_rgba(249,115,22,0.2)] border-orange-300";
-    if (score >= 50) return "shadow-[0_0_8px_rgba(234,179,8,0.15)] border-yellow-300";
-    return "shadow-[0_0_6px_rgba(59,130,246,0.1)] border-blue-200";
+    if (score >= 90) return "shadow-[0_0_12px_rgba(239,68,68,0.25)] border-red-500/45 ring-1 ring-red-500/20";
+    if (score >= 70) return "shadow-[0_0_10px_rgba(249,115,22,0.2)] border-orange-500/45 ring-1 ring-orange-500/20";
+    if (score >= 50) return "shadow-[0_0_8px_rgba(234,179,8,0.15)] border-yellow-500/45 ring-1 ring-yellow-500/20";
+    return "shadow-[0_0_6px_rgba(59,130,246,0.1)] border-blue-500/45 ring-1 ring-blue-500/20";
   }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       {/* Symbolic Resume Page layout */}
-      <div className="lg:col-span-5 bg-slate-900 border border-slate-700 rounded-xl p-4 md:p-6 overflow-hidden shadow-inner flex flex-col items-center">
-        <div className="text-xs text-slate-400 mb-3 flex items-center justify-between w-full">
-          <span className="flex items-center gap-1.5 font-medium"><Eye className="w-3.5 h-3.5 text-rose-500 animate-pulse" /> Eye-Tracking Simulator</span>
-          <span className="text-[10px] bg-slate-800 px-1.5 py-0.5 rounded text-indigo-400">Glance Mode</span>
+      <div className="lg:col-span-5 bg-[#0A0A0A] border border-white/5 rounded-2xl p-4 md:p-6 overflow-hidden shadow-inner flex flex-col items-center">
+        <div className="text-xs text-white/40 mb-3 flex items-center justify-between w-full font-medium">
+          <span className="flex items-center gap-1.5"><Eye className="w-4 h-4 text-emerald-400 animate-pulse" /> Eye-Tracking Simulator</span>
+          <span className="text-[10px] bg-zinc-900 border border-white/10 px-1.5 py-0.5 rounded text-emerald-400 font-mono tracking-wider">GLANCE MOCKUP</span>
         </div>
 
         {/* The Page Container */}
-        <div className="relative w-full max-w-[280px] min-h-[460px] bg-white border border-slate-200 rounded-md shadow-2xl p-4 flex flex-col gap-2 select-none relative">
+        <div className="relative w-full max-w-[280px] min-h-[460px] bg-zinc-950 border border-white/10 rounded-md shadow-2xl p-4 flex flex-col gap-2 select-none">
           {listData.map((seg) => (
             <div
               key={seg.id}
               className={`relative cursor-pointer rounded transition-all duration-200 ${
                 activeSegment === seg.id 
-                  ? "ring-2 ring-indigo-500 scale-[1.02]" 
+                  ? "ring-2 ring-emerald-500 scale-[1.02]" 
                   : "hover:scale-[1.01]"
               }`}
               style={{ height: `${seg.sizeY}px` }}
@@ -73,22 +73,22 @@ export default function HeatmapVisual({ data }: HeatmapVisualProps) {
               {/* Symbolic layout representing lines */}
               <div className="absolute inset-0 p-2 flex flex-col justify-between z-10">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[9px] font-bold text-slate-800 uppercase tracking-tight">
+                  <span className="font-mono text-[9px] font-bold text-white uppercase tracking-tight">
                     {seg.label}
                   </span>
-                  <span className="font-mono text-[9px] font-bold bg-slate-950 text-white px-1 rounded-sm">
+                  <span className="font-mono text-[8px] font-bold bg-emerald-500 text-black px-1 rounded-sm">
                     {seg.score}%
                   </span>
                 </div>
                 
                 {/* Visual Placeholder Lines */}
                 <div className="flex flex-col gap-1 w-full mt-1">
-                  <div className="h-1 bg-slate-300 rounded w-2/3"></div>
-                  <div className="h-1 bg-slate-200 rounded w-full"></div>
+                  <div className="h-0.5 bg-white/20 rounded w-2/3"></div>
+                  <div className="h-0.5 bg-white/15 rounded w-full"></div>
                   {seg.sizeY > 70 && (
                     <>
-                      <div className="h-1 bg-slate-200 rounded w-[90%]"></div>
-                      <div className="h-1 bg-slate-200 rounded w-4/5"></div>
+                      <div className="h-0.5 bg-white/15 rounded w-[90%]"></div>
+                      <div className="h-0.5 bg-white/15 rounded w-4/5"></div>
                     </>
                   )}
                 </div>
@@ -99,7 +99,7 @@ export default function HeatmapVisual({ data }: HeatmapVisualProps) {
                 className="absolute inset-0 rounded transition-opacity duration-300"
                 style={{
                   backgroundColor: seg.color,
-                  boxShadow: activeSegment === seg.id ? `inset 0 0 10px rgba(0,0,0,0.15)` : "none"
+                  boxShadow: activeSegment === seg.id ? `inset 0 0 10px rgba(0,0,0,0.3)` : "none"
                 }}
               />
             </div>
@@ -109,35 +109,35 @@ export default function HeatmapVisual({ data }: HeatmapVisualProps) {
 
       {/* Numerical Heatmap breakdown */}
       <div className="lg:col-span-7 flex flex-col gap-4">
-        <div className="bg-white border border-slate-100 rounded-xl p-5 shadow-sm">
-          <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-1.5 border-b border-slate-100 pb-2">
-            <Flame className="w-4 h-4 text-orange-500" /> Recruiter Attention Hotspots
+        <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 shadow-sm">
+          <h3 className="text-xs font-bold text-white mb-4 flex items-center gap-1.5 border-b border-white/5 pb-2 uppercase tracking-wider">
+            <Flame className="w-4 h-4 text-emerald-400" /> Recruiter Attention Hotspots
           </h3>
           
           <div className="flex flex-col gap-2.5">
             {listData.map((item) => (
               <div
                 key={item.id}
-                className={`p-3 rounded-lg border transition-all duration-200 ${
+                className={`p-3.5 rounded-xl border transition-all duration-200 ${
                   activeSegment === item.id 
-                    ? `bg-slate-50 ${getRefinedGlow(item.score)}` 
-                    : "bg-white border-slate-100"
+                    ? `bg-[#0A0A0A] ${getRefinedGlow(item.score)}` 
+                    : "bg-black/25 border-white/5"
                 }`}
                 onMouseEnter={() => setActiveSegment(item.id)}
                 onMouseLeave={() => setActiveSegment(null)}
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-xs font-semibold text-slate-800">{item.label}</span>
+                  <span className="text-xs font-semibold text-white">{item.label}</span>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[10px] text-slate-500 font-mono">Attention Rating:</span>
-                    <span className="font-mono text-xs font-extrabold text-slate-900 border px-1.5 py-0.5 rounded bg-slate-50">
+                    <span className="text-[10px] text-white/40 font-mono">Attention:</span>
+                    <span className="font-mono text-xs font-bold text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded bg-emerald-500/10">
                       {item.score}%
                     </span>
                   </div>
                 </div>
 
                 {/* Score slider indicator */}
-                <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mb-1.5">
+                <div className="w-full bg-white/10 h-1 rounded-full overflow-hidden mb-1.5">
                   <div
                     className="h-full rounded-full transition-all duration-500"
                     style={{
@@ -146,7 +146,7 @@ export default function HeatmapVisual({ data }: HeatmapVisualProps) {
                     }}
                   />
                 </div>
-                <p className="text-[11px] text-slate-600 font-normal leading-relaxed">{item.desc}</p>
+                <p className="text-[11px] text-white/60 font-normal leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -154,34 +154,34 @@ export default function HeatmapVisual({ data }: HeatmapVisualProps) {
 
         {/* Most and Least Viewed Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-4">
-            <h4 className="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Primary Focus Lanes
+          <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-5">
+            <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Primary Focus Lanes
             </h4>
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col gap-1.5 font-normal">
               {data.mostViewed?.map((val, idx) => (
-                <li key={idx} className="text-xs text-emerald-700 flex items-start gap-1 pb-1">
-                  <span className="text-emerald-500 mt-0.5 font-bold">•</span>
+                <li key={idx} className="text-xs text-white/85 flex items-start gap-1 pb-1">
+                  <span className="text-emerald-400 mr-1.5 font-bold">•</span>
                   <span>{val}</span>
                 </li>
               )) || (
-                <li className="text-xs text-emerald-600">Executive Summary, Work History, Professional Skills</li>
+                <li className="text-xs text-white/80">Executive Summary, Work History, Professional Skills</li>
               )}
             </ul>
           </div>
 
-          <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
-            <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Lower Scrutiny Lanes
+          <div className="bg-black/30 border border-white/5 rounded-2xl p-5">
+            <h4 className="text-xs font-bold text-white/60 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-white/30"></span> Lower Scrutiny Lanes
             </h4>
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col gap-1.5 font-normal">
               {data.leastViewed?.map((val, idx) => (
-                <li key={idx} className="text-xs text-slate-600 flex items-start gap-1 pb-1">
-                  <span className="text-slate-400 mt-0.5">▪</span>
+                <li key={idx} className="text-xs text-white/50 flex items-start gap-1 pb-1">
+                  <span className="text-white/30 mr-1.5">▪</span>
                   <span>{val}</span>
                 </li>
               )) || (
-                <li className="text-xs text-slate-500">Academic coarse detail lines, Header contacts</li>
+                <li className="text-xs text-white/40">Academic coarse detail lines, Header contacts</li>
               )}
             </ul>
           </div>

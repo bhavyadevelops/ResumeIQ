@@ -201,25 +201,25 @@ export default function App() {
   };
 
   return (
-    <div id="app-root-container" className="min-h-screen bg-slate-50/50 text-slate-800 font-sans flex flex-col antialiased">
+    <div id="app-root-container" className="min-h-screen bg-[#080808] text-[#E5E5E5] font-sans flex flex-col antialiased selection:bg-emerald-500/30">
       {/* Absolute Loading Backdrop */}
       {loading && (
-        <div className="fixed inset-0 bg-slate-900/85 backdrop-blur-sm z-50 flex flex-col items-center justify-center p-4">
-          <div className="bg-slate-950/40 p-10 rounded-3xl border border-slate-800 text-center max-w-[420px] flex flex-col items-center shadow-2xl">
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex flex-col items-center justify-center p-4">
+          <div className="bg-[#0A0A0A] p-10 rounded-3xl border border-white/10 text-center max-w-[420px] flex flex-col items-center shadow-2xl">
             {/* Spinning pulse logo */}
             <div className="relative mb-6">
-              <div className="w-16 h-16 rounded-2xl bg-indigo-600/20 border border-indigo-500/50 flex items-center justify-center animate-pulse">
-                <Brain className="w-8 h-8 text-indigo-400 animate-spin" style={{ animationDuration: '6s' }} />
+              <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center animate-pulse">
+                <Brain className="w-8 h-8 text-emerald-400 animate-spin" style={{ animationDuration: '6s' }} />
               </div>
-              <div className="absolute -inset-2 rounded-2xl bg-indigo-500/10 blur animate-ping" style={{ animationDuration: '3s' }}></div>
+              <div className="absolute -inset-2 rounded-2xl bg-emerald-500/5 blur animate-ping" style={{ animationDuration: '3s' }}></div>
             </div>
 
-            <h3 className="text-white text-lg font-black tracking-tight mb-2">Analyzing ResumeIQ Assets</h3>
-            <p className="text-xs text-indigo-200/85 font-mono leading-relaxed h-12 flex items-center justify-center">
+            <h3 className="text-white text-lg font-bold tracking-tight mb-2">Analyzing ResumeIQ Assets</h3>
+            <p className="text-xs text-emerald-300/80 font-mono leading-relaxed h-12 flex items-center justify-center">
               {loadingStep}
             </p>
 
-            <span className="text-[10px] text-slate-500 font-normal uppercase tracking-widest mt-6 block">
+            <span className="text-[10px] text-white/30 font-medium uppercase tracking-widest mt-6 block">
               Processing under 10 seconds
             </span>
           </div>
@@ -227,16 +227,17 @@ export default function App() {
       )}
 
       {/* Primary Header */}
-      <header className="sticky top-0 bg-white/80 border-b border-slate-100 backdrop-blur-md z-40">
+      <header className="sticky top-0 bg-[#0A0A0A] border-b border-white/10 backdrop-blur-md z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 bg-slate-950 text-white rounded-lg select-none">
-              <span className="font-mono text-base font-black tracking-tighter">R</span>
-              <span className="font-mono text-base font-black tracking-tighter text-indigo-400">IQ</span>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
+              <div className="w-4 h-4 border-2 border-black rotate-45"></div>
             </div>
             <div>
-              <span className="text-base font-black tracking-tight text-slate-900 font-sans block leading-none">ResumeIQ</span>
-              <span className="text-[10px] text-slate-400 font-mono tracking-wider">AI Platform v1.0</span>
+              <span className="text-xl font-semibold tracking-tight text-white block leading-none">
+                Resume<span className="text-emerald-400">IQ</span>
+              </span>
+              <span className="text-[9px] text-white/45 font-mono tracking-wider mt-0.5 block">AI Platform v1.0</span>
             </div>
           </div>
 
@@ -244,13 +245,13 @@ export default function App() {
             {report && (
               <button
                 onClick={() => setReport(null)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 border border-slate-200 rounded-lg text-xs font-bold bg-white text-slate-600 hover:bg-slate-50 transition-all duration-200"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 border border-white/10 rounded-lg text-xs font-bold bg-[#111111] text-white hover:bg-zinc-900 hover:border-white/20 transition-all duration-200 uppercase tracking-wide"
               >
-                <ListRestart className="w-3.5 h-3.5" /> Close Analysis
+                <ListRestart className="w-3.5 h-3.5 text-emerald-400" /> Close Analysis
               </button>
             )}
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-            <span className="text-[11px] font-mono text-slate-400">Services Active</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span className="text-[10px] font-mono font-medium text-white/40 uppercase tracking-wider">Services Active</span>
           </div>
         </div>
       </header>
@@ -277,10 +278,10 @@ export default function App() {
             
             {/* Value Proposition Hero Header */}
             <div className="text-center py-6 max-w-2xl mx-auto">
-              <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 leading-none">
+              <h1 className="text-4xl font-bold tracking-tight text-white leading-tight">
                 AI-Powered ATS Optimizations
               </h1>
-              <p className="mt-3 text-sm text-slate-500 leading-relaxed font-normal">
+              <p className="mt-3 text-sm text-white/50 leading-relaxed font-normal">
                 Analyze student credentials and professional resumes against specific target job listings. Audit missing keywords, substantiate skill claims with work logic, draft custom interview studies, and boost score outcomes.
               </p>
             </div>
@@ -288,12 +289,12 @@ export default function App() {
             {/* Inputs Container */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
               {/* Left Panel: Resume Upload & Text Paste */}
-              <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+              <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-base font-extrabold text-slate-800 mb-1 flex items-center gap-1.5">
-                    <FileText className="w-4.5 h-4.5 text-indigo-500" /> Candidate Resume Criteria
+                  <h3 className="text-sm font-semibold text-white mb-1 flex items-center gap-1.5">
+                    <FileText className="w-4 h-4 text-emerald-400" /> Candidate Resume Criteria
                   </h3>
-                  <p className="text-xs text-slate-400 mb-4 font-normal">
+                  <p className="text-xs text-white/40 mb-4 font-normal">
                     Provide credentials as pasted plain text, or drop a TXT, DOCX, or PDF file.
                   </p>
 
@@ -302,12 +303,12 @@ export default function App() {
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     onDrop={handleDrop}
-                    className={`border-2 border-dashed rounded-2xl p-6 mb-4 flex flex-col items-center justify-center text-center transition-all duration-200 cursor-pointer ${
+                    className={`border-2 border-dashed rounded-xl p-6 mb-4 flex flex-col items-center justify-center text-center transition-all duration-200 cursor-pointer ${
                       isDragging 
-                        ? "border-indigo-500 bg-indigo-50/20 shadow-inner" 
+                        ? "border-emerald-500 bg-emerald-500/10 shadow-inner" 
                         : uploadedFile 
-                        ? "border-emerald-300 bg-emerald-50/10" 
-                        : "border-slate-200 hover:border-slate-300 bg-slate-50/30"
+                        ? "border-emerald-500/30 bg-emerald-500/5" 
+                        : "border-white/10 hover:border-white/25 bg-black/30"
                     }`}
                   >
                     <input
@@ -321,17 +322,17 @@ export default function App() {
                     <label htmlFor="manual-file-selector" className="w-full h-full cursor-pointer flex flex-col items-center justify-center">
                       {uploadedFile ? (
                         <>
-                          <FileCheck2 className="w-10 h-10 text-emerald-500 mb-2.5 animate-bounce" />
-                          <span className="text-xs font-bold text-slate-800 block">{uploadedFile.filename}</span>
-                          <span className="text-[10px] text-slate-400 font-mono mt-1">
+                          <FileCheck2 className="w-10 h-10 text-emerald-400 mb-2.5 animate-bounce" />
+                          <span className="text-xs font-bold text-white block">{uploadedFile.filename}</span>
+                          <span className="text-[10px] text-white/40 font-mono mt-1">
                             PDF Binary Attached (Auto-Parser Mode)
                           </span>
                         </>
                       ) : (
                         <>
-                          <UploadCloud className="w-10 h-10 text-slate-400 mb-2.5" />
-                          <span className="text-xs font-bold text-slate-700 block">Drag & Drop Resume File</span>
-                          <span className="text-[10px] text-slate-400 font-normal mt-1">
+                          <UploadCloud className="w-10 h-10 text-white/30 mb-2.5" />
+                          <span className="text-xs font-semibold text-white/80 block">Drag & Drop Resume File</span>
+                          <span className="text-[10px] text-white/30 font-normal mt-1">
                             PDF, DOCX, or TXT
                           </span>
                         </>
@@ -349,7 +350,7 @@ export default function App() {
                   )}
 
                   {/* Plain Text Paste Option */}
-                  <span className="text-[10px] text-slate-400 font-black tracking-widest uppercase block mb-1.5">
+                  <span className="text-[9px] text-white/40 font-black tracking-widest uppercase block mb-1.5">
                     OR Paste Resume Plain Text
                   </span>
                   <textarea
@@ -357,22 +358,22 @@ export default function App() {
                     placeholder="Candidate name, skills, past internships, certifications, university project records..."
                     value={resumeText}
                     onChange={(e) => setResumeText(e.target.value)}
-                    className="w-full border border-slate-200 rounded-xl p-3 text-xs bg-slate-50/20 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 font-normal leading-relaxed text-slate-700 placeholder:text-slate-400"
+                    className="w-full border border-white/10 rounded-xl p-3 text-xs bg-black/45 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 font-normal leading-relaxed text-[#E5E5E5] placeholder:text-white/20"
                   />
                 </div>
               </div>
 
               {/* Right Panel: Target Job Specification */}
-              <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+              <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-base font-extrabold text-slate-800 mb-1 flex items-center gap-1.5">
-                    <Briefcase className="w-4.5 h-4.5 text-indigo-500" /> Target Job Profile Specifications
+                  <h3 className="text-sm font-semibold text-white mb-1 flex items-center gap-1.5">
+                    <Briefcase className="w-4 h-4 text-emerald-400" /> Target Job Profile Specifications
                   </h3>
-                  <p className="text-xs text-slate-400 mb-4 font-normal">
+                  <p className="text-xs text-white/40 mb-4 font-normal">
                     Paste the target JD to calculate precise category score alignment.
                   </p>
 
-                  <span className="text-[10px] text-slate-400 font-black tracking-widest uppercase block mb-1.5">
+                  <span className="text-[9px] text-white/40 font-black tracking-widest uppercase block mb-1.5">
                     Paste Job Description / Requirements
                   </span>
                   <textarea
@@ -380,7 +381,7 @@ export default function App() {
                     placeholder="We are looking for a Software Engineer with 2+ years experience in Python, Docker modeling, AWS services, and relational DB queries..."
                     value={jobText}
                     onChange={(e) => setJobText(e.target.value)}
-                    className="w-full border border-slate-200 rounded-xl p-3 text-xs bg-slate-50/20 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 font-normal leading-relaxed text-slate-700 placeholder:text-slate-400"
+                    className="w-full border border-white/10 rounded-xl p-3 text-xs bg-black/45 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 font-normal leading-relaxed text-[#E5E5E5] placeholder:text-white/20"
                   />
                 </div>
               </div>
@@ -390,46 +391,46 @@ export default function App() {
             <div className="flex justify-center mt-2">
               <button
                 onClick={triggerAnalysis}
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-slate-900 border border-slate-800 hover:bg-slate-850 text-white rounded-xl text-xs font-bold shadow-md hover:shadow-lg scale-100 active:scale-95 transition-all duration-200"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-lg shadow-emerald-950/40 scale-100 active:scale-95 transition-all duration-200"
               >
-                <Sparkles className="w-4 h-4 text-indigo-400" /> Diagnose ATS Compatibility
+                <Sparkles className="w-4 h-4 text-emerald-100" /> Diagnose ATS Compatibility
               </button>
             </div>
 
             {/* Recent Storage History Section (Feature: Recent Analyses) */}
             {historyList.length > 0 && (
-              <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm">
-                <h3 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-1.5 border-b border-slate-100 pb-2">
-                  <HistoryIcon className="w-4 h-4 text-slate-500" /> Recent Document Analyses
+              <div className="bg-[#111111] border border-white/5 rounded-2xl p-6">
+                <h3 className="text-xs font-bold text-white mb-3 flex items-center gap-1.5 border-b border-white/5 pb-2 uppercase tracking-wider">
+                  <HistoryIcon className="w-4 h-4 text-emerald-400" /> Recent Document Analyses
                 </h3>
                 <div className="flex flex-col gap-2 max-h-[220px] overflow-y-auto">
                   {historyList.map((item, index) => (
                     <div
                       key={item.timestamp || index}
                       onClick={() => loadHistoryItem(item)}
-                      className="p-3 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-between cursor-pointer hover:bg-slate-100 hover:border-slate-300 transition-all duration-200 group"
+                      className="p-3 bg-black/40 border border-white/5 rounded-xl flex items-center justify-between cursor-pointer hover:bg-zinc-900 hover:border-white/10 transition-all duration-200 group"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-lg bg-indigo-50/50 border border-indigo-100 text-indigo-700 flex items-center justify-center font-mono font-black text-xs">
+                        <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center font-mono font-black text-xs">
                           {item.atsCompatibility.overallScore}%
                         </div>
                         <div>
-                          <span className="text-xs font-bold text-slate-800 group-hover:underline">
+                          <span className="text-xs font-bold text-white group-hover:underline">
                             {item.jobTitle}
                           </span>
-                          <span className="text-[10px] text-slate-400 block font-normal mt-0.5">
+                          <span className="text-[10px] text-white/40 block font-normal mt-0.5">
                             Tested {new Date(item.timestamp).toLocaleString()} • {item.parsedResume?.name}
                           </span>
                         </div>
                       </div>
 
                       <div className="flex items-center gap-3">
-                        <span className="text-[10px] text-indigo-600 font-bold bg-white border border-slate-100 px-2 py-0.5 rounded shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-[9px] text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                           Restore Report
                         </span>
                         <button
                           onClick={(e) => deleteHistoryItem(item.timestamp, e)}
-                          className="text-slate-400 hover:text-rose-600 p-1"
+                          className="text-white/40 hover:text-rose-500 p-1 transition-colors"
                           title="Purge Analysis"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -446,19 +447,19 @@ export default function App() {
           <div className="flex flex-col gap-6">
             
             {/* Header section detailing candidate bio statistics */}
-            <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>
-                <span className="text-[10px] text-indigo-600 font-bold tracking-widest uppercase block mb-1">Diagnosed Target Listing</span>
-                <h2 className="text-xl font-bold text-slate-900 leading-none mb-1.5">{report.jobTitle}</h2>
+                <span className="text-[9px] text-emerald-400 font-bold tracking-widest uppercase block mb-1">Diagnosed Target Listing</span>
+                <h2 className="text-xl font-bold text-white leading-none mb-1.5">{report.jobTitle}</h2>
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  <span className="text-xs text-slate-500 font-normal">Candidate Name:</span>
-                  <span className="text-xs font-bold text-slate-800 bg-slate-100 border px-1.5 py-0.5 rounded">
+                  <span className="text-xs text-white/40 font-normal">Candidate Name:</span>
+                  <span className="text-xs font-bold text-white bg-zinc-900 border border-white/10 px-1.5 py-0.5 rounded">
                     {report.parsedResume?.name || "Assembled Identity"}
                   </span>
                   {report.parsedResume?.email && (
                     <>
-                      <span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-                      <span className="text-xs text-slate-500 font-mono">{report.parsedResume.email}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/10"></span>
+                      <span className="text-xs text-white/45 font-mono">{report.parsedResume.email}</span>
                     </>
                   )}
                 </div>
@@ -466,17 +467,17 @@ export default function App() {
 
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Average ATS Score</span>
-                  <span className="text-3xl font-black font-mono text-slate-800">{report.atsCompatibility.overallScore}/100</span>
+                  <span className="text-[9px] text-white/40 font-bold uppercase tracking-wider block">Average ATS Score</span>
+                  <span className="text-3xl font-light font-mono text-white">{report.atsCompatibility.overallScore}/100</span>
                 </div>
-                <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center border border-indigo-100 text-indigo-700 font-mono font-black text-base">
+                <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center border border-emerald-500/20 text-emerald-400 font-mono font-black text-base animate-pulse">
                   {report.atsCompatibility.overallScore}%
                 </div>
               </div>
             </div>
 
             {/* Interactive Tab Navigation bar */}
-            <div className="flex items-center gap-1 overflow-x-auto bg-slate-100 rounded-xl p-1.5 scrollbar-hidden">
+            <div className="flex items-center gap-1 overflow-x-auto bg-[#111111] border border-white/5 rounded-xl p-1.5 scrollbar-hidden">
               {[
                 { id: "overview", label: "ATS Diagnostics Overview", count: null },
                 { id: "keywords", label: "Missing Keywords & Gaps", count: report.missingKeywords?.length },
@@ -490,13 +491,13 @@ export default function App() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-4 py-2 rounded-lg text-xs font-bold transition-all duration-250 whitespace-nowrap flex items-center gap-1.5 ${
                     activeTab === tab.id
-                      ? "bg-white text-slate-900 shadow-sm"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-white/40"
+                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-900/10"
+                      : "text-white/60 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   {tab.label}
                   {tab.count !== null && (
-                    <span className="text-[9px] font-black bg-slate-200 text-slate-800 px-1 rounded-sm">
+                    <span className="text-[9px] font-bold bg-white/10 text-white/95 px-1 rounded-sm">
                       {tab.count}
                     </span>
                   )}
@@ -518,12 +519,12 @@ export default function App() {
         )}
       </main>
 
-      <footer className="bg-white border-t border-slate-100 py-6 mt-12 text-center text-xs text-slate-400 font-normal">
+      <footer className="bg-[#0A0A0A] border-t border-white/5 py-6 mt-12 text-center text-xs text-white/35 font-normal">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>ResumeIQ &copy; 2026. Made as a production-grade ATS optimizer workspace.</p>
           <div className="flex items-center gap-4">
-            <span className="hover:text-slate-600 cursor-pointer">Security Standards</span>
-            <span className="hover:text-slate-600 cursor-pointer">Term Privacy</span>
+            <span className="hover:text-white cursor-pointer transition-colors">Security Standards</span>
+            <span className="hover:text-white cursor-pointer transition-colors">Term Privacy</span>
           </div>
         </div>
       </footer>
